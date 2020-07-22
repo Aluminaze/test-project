@@ -15,9 +15,18 @@ const useStyles = makeStyles({
 
 const DocumentsTree = (props) => {
   const classes = useStyles();
+  
+  const onClickSourceTree = (dataId) => {
+    props.setSelectedDataId(dataId);
+  };
 
   const renderTree = (nodes) => (
-    <TreeItem key={nodes.id} nodeId={nodes.id} label={nodes.name}>
+    <TreeItem
+      onClick={() => onClickSourceTree(nodes.id)}
+      key={nodes.id}
+      nodeId={nodes.id}
+      label={nodes.name}
+    >
       {Array.isArray(nodes.children)
         ? nodes.children.map((node) => renderTree(node))
         : null}
