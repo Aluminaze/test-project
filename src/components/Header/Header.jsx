@@ -4,8 +4,15 @@ import AccountTreeRoundedIcon from "@material-ui/icons/AccountTreeRounded";
 import AccountBoxRoundedIcon from "@material-ui/icons/AccountBoxRounded";
 import AddBoxRoundedIcon from "@material-ui/icons/AddBoxRounded";
 import SaveRoundedIcon from "@material-ui/icons/SaveRounded";
+import { getDocumentById } from "../../redux/documentViewerReducer";
+import { connect } from "react-redux";
 
 const Header = (props) => {
+
+  const openDocument = (documentId) => {
+    props.getDocumentById(documentId);
+  }
+
   return (
     <section className={style.header}>
       <div className={style.header__leftSide}>
@@ -27,6 +34,8 @@ const Header = (props) => {
           className={style.header__openIcon}
           style={{ fill: "white" }}
           fontSize="large"
+
+          onClick={ () => openDocument(props.selectedDataId)}
         />
         <AccountBoxRoundedIcon
           className={style.header__accountIcon}
@@ -38,4 +47,10 @@ const Header = (props) => {
   );
 };
 
-export default Header;
+const mapStateToProps = (state) => {
+  return {
+    selectedDataId: state.sourceTree.selectedDataId
+  };
+};
+
+export default connect(mapStateToProps, { getDocumentById })(Header);

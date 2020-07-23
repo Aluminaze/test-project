@@ -21,7 +21,7 @@ const DialogsTree = (props) => {
 
   const renderTree = (nodes) => (
     <TreeItem
-      onClick={() => onClickSourceTree(nodes.id)}
+      onClick={() => nodes.type === "document" ? onClickSourceTree(nodes.id) : null}
       key={nodes.id}
       nodeId={nodes.id}
       label={nodes.name}

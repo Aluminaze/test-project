@@ -1,5 +1,6 @@
 const SET_SELECTED_DATA_ID = "SET_SELECTED_DATA_ID";
 
+
 export const setSelectedDataId = (dataId) => ({ type: SET_SELECTED_DATA_ID, dataId });
 
 let initialState = {
@@ -10,36 +11,44 @@ let initialState = {
       children: [
         {
           id: "1",
+          type: "folder",
           name: "Партнеры",
           children: [
             {
               id: "1_1",
+              type: "document",
               name: "Письмо 1",
             },
             {
               id: "1_2",
+              type: "document",
               name: "Письмо 2",
             },
             {
               id: "1_3",
+              type: "document",
               name: "Письмо 3",
             },
           ],
         },
         {
           id: "2",
+          type: "folder",
           name: "ФНС",
           children: [
             {
               id: "2_1",
+              type: "document",
               name: "Извещение 1",
             },
             {
               id: "2_2",
+              type: "document",
               name: "Извещение 2",
             },
             {
               id: "2_3",
+              type: "document",
               name: "Извещение 3",
             },
           ],
@@ -48,40 +57,49 @@ let initialState = {
     },
     documentsData: {
       id: "root",
+      type: "folder",
       name: "Документы",
       children: [
         {
           id: "3",
+          type: "folder",
           name: "Договора",
           children: [
             {
               id: "3_1",
+              type: "document",
               name: "Договор 1",
             },
             {
               id: "3_2",
+              type: "document",
               name: "Договор 2",
             },
             {
               id: "3_3",
+              type: "document",
               name: "Договор 3",
             },
           ],
         },
         {
           id: "4",
+          type: "folder",
           name: "Декларации",
           children: [
             {
               id: "4_1",
+              type: "document",
               name: "Декларация 1",
             },
             {
               id: "4_2",
+              type: "document",
               name: "Декларация 2",
             },
             {
               id: "4_3",
+              type: "document",
               name: "Декларация 3",
             },
           ],
@@ -89,20 +107,6 @@ let initialState = {
       ],
     },
   },
-  documents: [
-    { id: "1_1", text: "ID[1_1]: Письмо 1" },
-    { id: "1_2", text: "ID[1_2]: Письмо 2" },
-    { id: "1_3", text: "ID[1_3]: Письмо 3" },
-    { id: "2_1", text: "ID[2_1]: Извещение 1" },
-    { id: "2_2", text: "ID[2_2]: Извещение 2" },
-    { id: "2_3", text: "ID[2_3]: Извещение 3" },
-    { id: "3_1", text: "ID[3_1]: Договор 1" },
-    { id: "3_2", text: "ID[3_2]: Договор 2" },
-    { id: "3_3", text: "ID[3_3]: Договор 3" },
-    { id: "4_1", text: "ID[4_1]: Декларация 1" },
-    { id: "4_2", text: "ID[4_2]: Декларация 2" },
-    { id: "4_3", text: "ID[4_3]: Декларация 3" },
-  ],
   selectedDataId: null,
 };
 
