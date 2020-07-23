@@ -1,9 +1,15 @@
 const GET_DOCUMENT_BY_ID = "GET_DOCUMENT_BY_ID";
+const GET_START_EDIT_DOCUMENT = "GET_START_EDIT_DOCUMENT";
 
 export const getDocumentById = (documentId) => ({
   type: GET_DOCUMENT_BY_ID,
   documentId,
 });
+
+export const getStartEditDocument = (currentOpenDocument) => ({
+  type: GET_START_EDIT_DOCUMENT,
+  currentOpenDocument,
+})
 
 let initialState = {
   documents: [
@@ -21,6 +27,8 @@ let initialState = {
     { id: "4_3", name: "Декларация 3", text: "ID[4_3]: Декларация 3" },
   ],
   documentIsOpen: [ { id: "null", name: null, text: "Выберите и откройте документ или пиьсмо" } ],
+  documentIsEdit: [],
+  documentEditMode: false
 };
 
 const documentViewerReducer = (state = initialState, action) => {
@@ -31,6 +39,13 @@ const documentViewerReducer = (state = initialState, action) => {
         documentIsOpen: state.documents.filter(
           (document) => document.id === action.documentId
         ),
+      };
+    }
+    case GET_START_EDIT_DOCUMENT: {
+      return {
+        ...state,
+        documentIsEdit: {...action.currentOpenDocument},
+        documentEditMode: true
       };
     }
     default:

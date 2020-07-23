@@ -4,6 +4,7 @@ import DocumentsTree from "./DocumentsTree";
 import DialogsTree from "./DialogsTree";
 import { connect } from "react-redux";
 import { setSelectedDataId } from "../../redux/sourceTreeReducer";
+import { getDocumentById } from "../../redux/documentViewerReducer";
 
 const SourceTree = (props) => {
   return (
@@ -11,10 +12,12 @@ const SourceTree = (props) => {
       <DocumentsTree
         documentsData={props.sourceTreeData.documentsData}
         setSelectedDataId={props.setSelectedDataId}
+        getDocumentById={props.getDocumentById}
       />
       <DialogsTree
         dialogsData={props.sourceTreeData.dialogsData}
         setSelectedDataId={props.setSelectedDataId}
+        getDocumentById={props.getDocumentById}
       />
     </div>
   );
@@ -27,4 +30,4 @@ const mapStateToProps = (state) => {
   };
 };
 
-export default connect(mapStateToProps, { setSelectedDataId })(SourceTree);
+export default connect(mapStateToProps, { setSelectedDataId, getDocumentById })(SourceTree);

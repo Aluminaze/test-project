@@ -15,9 +15,9 @@ const useStyles = makeStyles({
 
 const DocumentsTree = (props) => {
   const classes = useStyles();
-
   const onClickSourceTree = (dataId) => {
     props.setSelectedDataId(dataId);
+    props.getDocumentById(dataId);
   };
 
   const renderTree = (nodes) => (
