@@ -1,6 +1,5 @@
 const SET_SELECTED_DATA_ID = "SET_SELECTED_DATA_ID";
 
-
 export const setSelectedDataId = (dataId) => ({ type: SET_SELECTED_DATA_ID, dataId });
 
 let initialState = {

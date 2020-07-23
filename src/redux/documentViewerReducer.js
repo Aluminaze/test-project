@@ -7,17 +7,14 @@ export const getDocumentById = (documentId) => ({
   type: GET_DOCUMENT_BY_ID,
   documentId,
 });
-
 export const getStartEditDocument = (currentOpenDocumentText) => ({
   type: GET_START_EDIT_DOCUMENT,
   currentOpenDocumentText,
 });
-
 export const onChangeEditDocumentText = (editedDocumentText) => ({
   type: ON_CHANGE_EDIT_DOCUMENT_TEXT,
   editedDocumentText,
 });
-
 export const saveEditDocumentText = (documentId) => ({
   type: SAVE_EDIT_DOCUMENT_TEXT,
   documentId
