@@ -2,15 +2,18 @@ import React from "react";
 import style from "./DocumentViewer.module.css";
 import { connect } from "react-redux";
 import InfoBar from "./InfoBar/InfoBar";
+import DocumentReadMode from "./DocumentReadMode/DocumentReadMode";
+import DocumentEditMode from "./DocumentEditMode/DocumentEditMode";
 
 const DocumentViewer = (props) => {
   return (
     <div className={style.documents__viewer}>
-      <div className={style.documents__text}>
-        {" "}
-        {props.documentIsOpen[0].text}{" "}
-      </div>
-     <InfoBar documentIsOpen_name={props.documentIsOpen[0].name}/>
+      {props.documentEditMode ? (
+        <DocumentEditMode documentIsOpen_textEdit = {props.documentIsOpen_textEdit} />
+      ) : (
+        <DocumentReadMode documentIsOpen_text={props.documentIsOpen[0].text} />
+      )}
+      <InfoBar documentIsOpen_name={props.documentIsOpen[0].name} />
     </div>
   );
 };
@@ -18,6 +21,8 @@ const DocumentViewer = (props) => {
 const mapStateToProps = (state) => {
   return {
     documentIsOpen: state.documentViewer.documentIsOpen,
+    documentEditMode: state.documentViewer.documentEditMode,
+    documentIsOpen_textEdit: state.documentViewer.documentIsOpen_textEdit
   };
 };
 

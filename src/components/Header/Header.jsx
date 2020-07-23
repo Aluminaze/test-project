@@ -4,6 +4,7 @@ import AccountTreeRoundedIcon from "@material-ui/icons/AccountTreeRounded";
 import AccountBoxRoundedIcon from "@material-ui/icons/AccountBoxRounded";
 import AddBoxRoundedIcon from "@material-ui/icons/AddBoxRounded";
 import SaveRoundedIcon from "@material-ui/icons/SaveRounded";
+import EditRoundedIcon from '@material-ui/icons/EditRounded';
 import {
   getDocumentById,
   getStartEditDocument,
@@ -11,9 +12,10 @@ import {
 import { connect } from "react-redux";
 
 const Header = (props) => {
-  const startEditDocument = (currentOpenDocument) => {
+  const startEditDocument = (currentOpenDocumentText) => {
     if (props.documentIsOpen[0].name !== null) {
-      props.getStartEditDocument(currentOpenDocument);
+      props.getStartEditDocument(currentOpenDocumentText);
+      console.log('currentOpenDocumentText: ', currentOpenDocumentText);
       console.log(`EDIT DOCUMENT MODE ON`);
     }
   };
@@ -35,11 +37,12 @@ const Header = (props) => {
           style={{ fill: "white" }}
           fontSize="large"
         />
-        <AddBoxRoundedIcon
+        
+        <EditRoundedIcon
           className={style.header__openIcon}
           style={{ fill: "white" }}
           fontSize="large"
-          onClick={() => startEditDocument(props.documentIsOpen)}
+          onClick={() => startEditDocument(props.documentIsOpen[0].text)}
         />
         <AccountBoxRoundedIcon
           className={style.header__accountIcon}
