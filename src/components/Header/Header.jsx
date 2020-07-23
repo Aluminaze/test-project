@@ -16,11 +16,11 @@ const Header = (props) => {
   return (
     <section className={style.header}>
       <div className={style.header__leftSide}>
-        <AccountTreeRoundedIcon
+        {/* <AccountTreeRoundedIcon
           className={style.header__treeIcon}
           style={{ fill: "white" }}
           fontSize="large"
-        />
+        /> */}
         <h1 className={style.header__title}>Тестовое задание</h1>
       </div>
 

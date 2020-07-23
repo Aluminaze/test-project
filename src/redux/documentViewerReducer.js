@@ -20,7 +20,7 @@ let initialState = {
     { id: "4_2", name: "Декларация 2", text: "ID[4_2]: Декларация 2" },
     { id: "4_3", name: "Декларация 3", text: "ID[4_3]: Декларация 3" },
   ],
-  documentIsOpen: [ { id: null, name: null, text: "Выберите и откройте документ или пиьсмо" } ],
+  documentIsOpen: [ { id: "null", name: null, text: "Выберите и откройте документ или пиьсмо" } ],
 };
 
 const documentViewerReducer = (state = initialState, action) => {
