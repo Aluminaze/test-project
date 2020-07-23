@@ -1,3 +1,12 @@
 .documents__text {
   padding: 1rem;
 }
+
+.documents__textarea {
+  display: inline-block;
+  resize: none;
+  overflow: hidden;
+  width: 100%;
+  height: 87vh;
+  border: 1px solid #000;
+}

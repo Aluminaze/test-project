@@ -1,5 +1,6 @@
 const GET_DOCUMENT_BY_ID = "GET_DOCUMENT_BY_ID";
 const GET_START_EDIT_DOCUMENT = "GET_START_EDIT_DOCUMENT";
+const ON_CHANGE_EDIT_DOCUMENT_TEXT = "ON_CHANGE_EDIT_DOCUMENT_TEXT";
 
 export const getDocumentById = (documentId) => ({
   type: GET_DOCUMENT_BY_ID,
@@ -9,7 +10,12 @@ export const getDocumentById = (documentId) => ({
 export const getStartEditDocument = (currentOpenDocumentText) => ({
   type: GET_START_EDIT_DOCUMENT,
   currentOpenDocumentText,
-})
+});
+
+export const onChangeEditDocumentText = (editedDocumentText) => ({
+  type: ON_CHANGE_EDIT_DOCUMENT_TEXT,
+  editedDocumentText,
+});
 
 let initialState = {
   documents: [
@@ -26,9 +32,11 @@ let initialState = {
     { id: "4_2", name: "Декларация 2", text: "ID[4_2]: Декларация 2" },
     { id: "4_3", name: "Декларация 3", text: "ID[4_3]: Декларация 3" },
   ],
-  documentIsOpen: [ { id: "null", name: null, text: "Выберите и откройте документ или пиcьмо" } ],
+  documentIsOpen: [
+    { id: "null", name: null, text: "Выберите и откройте документ или пиcьмо" },
+  ],
   documentIsOpen_textEdit: "",
-  documentEditMode: false
+  documentEditMode: false,
 };
 
 const documentViewerReducer = (state = initialState, action) => {
@@ -45,7 +53,13 @@ const documentViewerReducer = (state = initialState, action) => {
       return {
         ...state,
         documentIsOpen_textEdit: action.currentOpenDocumentText,
-        documentEditMode: true
+        documentEditMode: true,
+      };
+    }
+    case ON_CHANGE_EDIT_DOCUMENT_TEXT: {
+      return {
+        ...state,
+        documentIsOpen_textEdit: action.editedDocumentText,
       };
     }
     default:
