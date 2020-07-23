@@ -16,13 +16,19 @@ const useStyles = makeStyles({
 const DocumentsTree = (props) => {
   const classes = useStyles();
   const onClickSourceTree = (dataId) => {
-    props.setSelectedDataId(dataId);
-    props.getDocumentById(dataId);
+    if (props.documentEditMode) {
+      
+    } else {
+      props.setSelectedDataId(dataId);
+      props.getDocumentById(dataId);
+    }
   };
 
   const renderTree = (nodes) => (
     <TreeItem
-      onClick={() => nodes.type === "document" ? onClickSourceTree(nodes.id) : null}
+      onClick={() =>
+        nodes.type === "document" ? onClickSourceTree(nodes.id) : null
+      }
       key={nodes.id}
       nodeId={nodes.id}
       label={nodes.name}

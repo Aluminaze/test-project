@@ -13,11 +13,13 @@ const SourceTree = (props) => {
         documentsData={props.sourceTreeData.documentsData}
         setSelectedDataId={props.setSelectedDataId}
         getDocumentById={props.getDocumentById}
+        documentEditMode={props.documentEditMode}
       />
       <DialogsTree
         dialogsData={props.sourceTreeData.dialogsData}
         setSelectedDataId={props.setSelectedDataId}
         getDocumentById={props.getDocumentById}
+        documentEditMode={props.documentEditMode}
       />
     </div>
   );
@@ -27,6 +29,7 @@ const mapStateToProps = (state) => {
   return {
     sourceTreeData: state.sourceTree.sourceTreeData,
     selectedDataId: state.sourceTree.selectedDataId,
+    documentEditMode: state.documentViewer.documentEditMode,
   };
 };
 
