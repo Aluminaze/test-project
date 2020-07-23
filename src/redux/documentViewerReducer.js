@@ -50,9 +50,10 @@ const documentViewerReducer = (state = initialState, action) => {
     case GET_DOCUMENT_BY_ID: {
       return {
         ...state,
+        documentEditMode: false,
         documentIsOpen: state.documents.filter(
           (document) => document.id === action.documentId
-        ),
+        )
       };
     }
     case GET_START_EDIT_DOCUMENT: {
