@@ -31,11 +31,11 @@
   color: white;
 }
 
-.header__saveIcon {
-}
-
-.header__openIcon {
+.header__saveIcon:hover,
+.header__openIcon:hover {
+  cursor: pointer;
 }
 
 .header__accountIcon {
+  
 }

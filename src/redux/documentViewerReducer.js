@@ -39,7 +39,7 @@ let initialState = {
     { id: "4_3", name: "Декларация 3", text: "ID[4_3]: Декларация 3" },
   ],
   documentIsOpen: [
-    { id: "null", name: null, text: "Выберите и откройте документ или пиcьмо" },
+    { id: null, name: null, text: "Выберите и откройте документ или пиcьмо" },
   ],
   documentIsOpen_textEdit: "",
   documentEditMode: false,

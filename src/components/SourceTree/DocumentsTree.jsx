@@ -5,7 +5,7 @@ import TreeView from "@material-ui/lab/TreeView";
 import ExpandMoreIcon from "@material-ui/icons/ExpandMore";
 import ChevronRightIcon from "@material-ui/icons/ChevronRight";
 import { confirmAlert } from "react-confirm-alert";
-import 'react-confirm-alert/src/react-confirm-alert.css';
+import "react-confirm-alert/src/react-confirm-alert.css";
 
 const useStyles = makeStyles({
   root: {
@@ -16,31 +16,29 @@ const useStyles = makeStyles({
 });
 
 const DocumentsTree = (props) => {
-
   let confirmForSave = () => {
     confirmAlert({
-      // title: 'Confirm to submit',
-      message: 'Сохранить последние изменения в текущем документе?',
+      message: "Сохранить последние изменения в текущем документе?",
       buttons: [
         {
-          label: 'Да',
-          onClick: () => props.saveEditDocumentText(props.selectedDataId)
+          label: "Да",
+          onClick: () => props.saveEditDocumentText(props.selectedDataId),
         },
         {
-          label: 'Нет',
-          onClick: () => props.getDocumentById(props.selectedDataId)
-        }
-      ]
+          label: "Нет",
+          onClick: () => props.getDocumentById(props.selectedDataId),
+        },
+      ],
     });
   };
 
   const classes = useStyles();
   const onClickSourceTree = (dataId) => {
     if (props.documentEditMode) {
-      confirmForSave()
+      confirmForSave();
     } else {
       props.setSelectedDataId(dataId);
-      props.getDocumentById(dataId);      
+      props.getDocumentById(dataId);
     }
   };
 

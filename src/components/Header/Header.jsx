@@ -24,7 +24,7 @@ const Header = (props) => {
 
       <div className={style.header__rightSide}>
         <SaveRoundedIcon
-          onClick={() => props.saveEditDocumentText(props.selectedDataId)}
+          onClick={() => props.documentEditMode ? props.saveEditDocumentText(props.selectedDataId) : null}
           className={style.header__saveIcon}
           style={{ fill: "white" }}
           fontSize="large"
@@ -50,6 +50,7 @@ const mapStateToProps = (state) => {
   return {
     selectedDataId: state.sourceTree.selectedDataId,
     documentIsOpen: state.documentViewer.documentIsOpen,
+    documentEditMode: state.documentViewer.documentEditMode
   };
 };
 
