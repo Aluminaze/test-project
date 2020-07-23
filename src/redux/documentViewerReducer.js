@@ -1,6 +1,7 @@
 const GET_DOCUMENT_BY_ID = "GET_DOCUMENT_BY_ID";
 const GET_START_EDIT_DOCUMENT = "GET_START_EDIT_DOCUMENT";
 const ON_CHANGE_EDIT_DOCUMENT_TEXT = "ON_CHANGE_EDIT_DOCUMENT_TEXT";
+const SAVE_EDIT_DOCUMENT_TEXT = "GET_SAVE_EDIT_DOCUMENT_TEXT";
 
 export const getDocumentById = (documentId) => ({
   type: GET_DOCUMENT_BY_ID,
@@ -16,6 +17,11 @@ export const onChangeEditDocumentText = (editedDocumentText) => ({
   type: ON_CHANGE_EDIT_DOCUMENT_TEXT,
   editedDocumentText,
 });
+
+export const saveEditDocumentText = (documentId) => ({
+  type: SAVE_EDIT_DOCUMENT_TEXT,
+  documentId
+})
 
 let initialState = {
   documents: [
@@ -60,6 +66,16 @@ const documentViewerReducer = (state = initialState, action) => {
       return {
         ...state,
         documentIsOpen_textEdit: action.editedDocumentText,
+      };
+    }
+    case SAVE_EDIT_DOCUMENT_TEXT: {
+      return {
+        ...state,
+        documents: [
+          ...state.documents,
+          state.documentIsOpen[0].text = state.documentIsOpen_textEdit
+        ],
+        documentEditMode: false
       };
     }
     default:

@@ -8,6 +8,7 @@ import EditRoundedIcon from '@material-ui/icons/EditRounded';
 import {
   getDocumentById,
   getStartEditDocument,
+  saveEditDocumentText,
 } from "../../redux/documentViewerReducer";
 import { connect } from "react-redux";
 
@@ -33,6 +34,7 @@ const Header = (props) => {
 
       <div className={style.header__rightSide}>
         <SaveRoundedIcon
+          onClick={() => props.saveEditDocumentText(props.selectedDataId)}
           className={style.header__saveIcon}
           style={{ fill: "white" }}
           fontSize="large"
@@ -61,4 +63,4 @@ const mapStateToProps = (state) => {
   };
 };
 
-export default connect(mapStateToProps, { getStartEditDocument })(Header);
+export default connect(mapStateToProps, { getStartEditDocument, saveEditDocumentText })(Header);
