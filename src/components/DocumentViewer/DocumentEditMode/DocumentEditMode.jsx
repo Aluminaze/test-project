@@ -8,15 +8,13 @@ const DocumentEditMode = (props) => {
   };
 
   return (
-    <div className={style.documents__text}>
-      <textarea
-        className={style.documents__textarea}
-        ref={editedText}
-        autofocus={true}
-        onChange={onChangeEditedText}
-        value={props.documentIsOpen_textEdit}
-      />
-    </div>
+    <textarea
+      className={style.documents__textarea}
+      ref={editedText}
+      autofocus={true}
+      onChange={onChangeEditedText}
+      value={props.documentIsOpen_textEdit}
+    />
   );
 };
 
