@@ -21,10 +21,6 @@
   align-items: center;
 }
 
-.header__treeIcon {
-  margin-right: 1rem;
-}
-
 .header__title {
   font-size: 1.4rem;
   font-weight: 400;
@@ -46,6 +42,7 @@
 .header__saveButton span {
   margin-left: 0.2rem;
   color: white;
+  
 }
 
 .header__editButton {
