@@ -22,22 +22,33 @@ const Header = (props) => {
         <h1 className={style.header__title}>Тестовое задание</h1>
       </div>
       <div className={style.header__rightSide}>
-        <SaveRoundedIcon
+        <button></button>
+        <button
+          className={style.header__saveButton}
           onClick={() =>
             props.documentEditMode
               ? props.saveEditDocumentText(props.selectedDataId)
               : null
           }
-          className={style.header__saveIcon}
-          style={{ fill: "white" }}
-          fontSize="large"
-        />
-        <EditRoundedIcon
-          className={style.header__openIcon}
-          style={{ fill: "white" }}
-          fontSize="large"
+        >
+          <SaveRoundedIcon
+            className={style.header__saveIcon}
+            style={{ fill: "white" }}
+            fontSize="default"
+          />
+          <span>Сохранить</span>
+        </button>
+        <button
+          className={style.header__editButton}
           onClick={() => startEditDocument(props.documentIsOpen[0].text)}
-        />
+        >
+          <EditRoundedIcon
+            className={style.header__openIcon}
+            style={{ fill: "white" }}
+            fontSize="default"
+          />
+          <span>Редактировать</span>
+        </button>
         <AccountBoxRoundedIcon
           className={style.header__accountIcon}
           style={{ fill: "white" }}

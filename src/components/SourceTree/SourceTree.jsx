@@ -67,7 +67,7 @@ const DialogsTree = (props) => {
         defaultExpanded={["root"]}
         defaultExpandIcon={<ChevronRightIcon />}
       >
-        {renderTree(props.documentsData)}
+        {renderTree(props.dialogsData)}
       </TreeView>
       <TreeView
         className={classes.root}
@@ -75,7 +75,7 @@ const DialogsTree = (props) => {
         defaultExpanded={["root"]}
         defaultExpandIcon={<ChevronRightIcon />}
       >
-        {renderTree(props.dialogsData)}
+        {renderTree(props.documentsData)}
       </TreeView>
     </div>
   );
