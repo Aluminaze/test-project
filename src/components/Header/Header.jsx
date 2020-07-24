@@ -17,69 +17,71 @@ const Header = (props) => {
   };
 
   let editButton;
+  const editButton_active = (
+    <button
+      className={style.header__editButton}
+      onClick={(event) => {
+        event.preventDefault();
+        startEditDocument(props.documentIsOpen[0].text);
+      }}
+    >
+      <EditRoundedIcon
+        className={style.header__openIcon}
+        style={{ fill: "white" }}
+        fontSize="default"
+      />
+      <span>Редактировать</span>
+    </button>
+  );
+  const editButton_deactive = (
+    <button disabled className={style.header__editButton__disabled}>
+      <EditRoundedIcon
+        className={style.header__openIcon}
+        style={{ fill: "#a6a6a6" }}
+        fontSize="default"
+      />
+      <span>Редактировать</span>
+    </button>
+  );
   let saveButton;
+  const saveButton_active = (
+    <button
+      className={style.header__saveButton}
+      onClick={() =>
+        props.documentEditMode
+          ? props.saveEditDocumentText(props.selectedDataId)
+          : null
+      }
+    >
+      <SaveRoundedIcon
+        className={style.header__saveIcon}
+        style={{ fill: "white" }}
+        fontSize="default"
+      />
+      <span>Сохранить</span>
+    </button>
+  );
+  const saveButton_deactive = (
+    <button disabled className={style.header__saveButton__disabled}>
+      <SaveRoundedIcon
+        className={style.header__saveIcon}
+        style={{ fill: "#a6a6a6" }}
+        fontSize="default"
+      />
+      <span>Сохранить</span>
+    </button>
+  );
+
   if (props.documentEditMode) {
-    saveButton = <button
-    className={style.header__saveButton}
-    onClick={() =>
-      props.documentEditMode
-        ? props.saveEditDocumentText(props.selectedDataId)
-        : null
-    }
-  >
-    <SaveRoundedIcon
-      className={style.header__saveIcon}
-      style={{ fill: "white" }}
-      fontSize="default"
-    />
-    <span>Сохранить</span>
-  </button>
-    editButton = (
-      <button
-        disabled
-        className={style.header__editButton__disabled}
-      >
-        <EditRoundedIcon
-          className={style.header__openIcon}
-          style={{ fill: "#a6a6a6" }}
-          fontSize="default"
-        />
-        <span>Редактировать</span>
-      </button>
-    );
+    saveButton = saveButton_active;
+    editButton = editButton_deactive;
   } else {
-    saveButton = <button
-    disabled
-    className={style.header__saveButton__disabled}
-    onClick={() =>
-      props.documentEditMode
-        ? props.saveEditDocumentText(props.selectedDataId)
-        : null
+    saveButton = saveButton_deactive;
+    if (props.selectedDataId !== null) {
+      editButton = editButton_active;
+    } else {
+      editButton = editButton_deactive;
     }
-  >
-    <SaveRoundedIcon
-      className={style.header__saveIcon}
-      style={{ fill: "#a6a6a6" }}
-      fontSize="default"
-    />
-    <span>Сохранить</span>
-  </button>
-    editButton = (
-      <button
-        className={style.header__editButton}
-        onClick={(event) => {
-          event.preventDefault();
-          startEditDocument(props.documentIsOpen[0].text);
-        }}
-      >
-        <EditRoundedIcon
-          className={style.header__openIcon}
-          style={{ fill: "white" }}
-          fontSize="default"
-        />
-        <span>Редактировать</span>
-      </button>
-    );
   }
 
   return (
@@ -89,22 +91,7 @@ const Header = (props) => {
       </div>
       <div className={style.header__rightSide}>
         {saveButton}
-        {/* <button
-          className={style.header__saveButton}
-          onClick={() =>
-            props.documentEditMode
-              ? props.saveEditDocumentText(props.selectedDataId)
-              : null
-          }
-        >
-          <SaveRoundedIcon
-            className={style.header__saveIcon}
-            style={{ fill: "white" }}
-            fontSize="default"
-          />
-          <span>Сохранить</span>
-        </button> */}
-          {editButton}
+        {editButton}
         <AccountBoxRoundedIcon
           className={style.header__accountIcon}
           style={{ fill: "white" }}
