@@ -5,6 +5,7 @@
   flex-direction: row;
   align-items: center;
   justify-content: space-between;
+  min-height: 2.35rem;
   background-color: rgb(25, 118, 210);
   padding: 0 1rem;
 }
