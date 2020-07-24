@@ -15,7 +15,7 @@ const InfoBar = (props) => {
   return (
     <div className={(style.documents__infoBar, style.infoBar)}>
       <div className={style.infoBar__openFileName}>
-        <DescriptionIcon fontSize="small" />
+        <DescriptionIcon className={style.infoBar__documentIcon} fontSize="small" />
         {props.documentIsOpen_name !== null ? props.documentIsOpen_name : null}
       </div>
       <div className={style.infoBar__currentDate}>{getCurrentDate()}</div>

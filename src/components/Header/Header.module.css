@@ -31,21 +31,38 @@
   color: white;
 }
 
-.header__editButton, .header__saveButton {
+.header__editButton,
+.header__saveButton {
   display: flex;
   justify-content: center;
   align-items: center;
   background-color: transparent;
   border: 1px solid white;
-  border-radius: .5rem;
+  border-radius: 0.5rem;
   padding: 0.2rem 0.4rem;
 }
 
-.header__editButton span, .header__saveButton span {
+.header__editButton span,
+.header__saveButton span {
   margin-left: 0.2rem;
   color: white;
 }
 
 .header__editButton {
+  margin-left: 0.3rem;
+}
+
+.header__editButton__disabled,
+.header__saveButton__disabled {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: transparent;
+  border: 1px solid #a6a6a6;
+  border-radius: 0.5rem;
+  padding: 0.2rem 0.4rem;
+  cursor: default;
+  margin-left: 0.2rem;
+  color: #a6a6a6;
   margin-left: 0.3rem;
 }

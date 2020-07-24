@@ -21,3 +21,6 @@
   flex-direction: row;
   align-items: center;
 }
+.infoBar__documentIcon {
+  margin-right: 0.3rem;
+}

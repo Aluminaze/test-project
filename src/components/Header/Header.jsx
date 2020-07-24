@@ -16,14 +16,80 @@ const Header = (props) => {
     }
   };
 
+  let editButton;
+  let saveButton;
+  if (props.documentEditMode) {
+    saveButton = <button
+    className={style.header__saveButton}
+    onClick={() =>
+      props.documentEditMode
+        ? props.saveEditDocumentText(props.selectedDataId)
+        : null
+    }
+  >
+    <SaveRoundedIcon
+      className={style.header__saveIcon}
+      style={{ fill: "white" }}
+      fontSize="default"
+    />
+    <span>Сохранить</span>
+  </button>
+    editButton = (
+      <button
+        disabled
+        className={style.header__editButton__disabled}
+      >
+        <EditRoundedIcon
+          className={style.header__openIcon}
+          style={{ fill: "#a6a6a6" }}
+          fontSize="default"
+        />
+        <span>Редактировать</span>
+      </button>
+    );
+  } else {
+    saveButton = <button
+    disabled
+    className={style.header__saveButton__disabled}
+    onClick={() =>
+      props.documentEditMode
+        ? props.saveEditDocumentText(props.selectedDataId)
+        : null
+    }
+  >
+    <SaveRoundedIcon
+      className={style.header__saveIcon}
+      style={{ fill: "#a6a6a6" }}
+      fontSize="default"
+    />
+    <span>Сохранить</span>
+  </button>
+    editButton = (
+      <button
+        className={style.header__editButton}
+        onClick={(event) => {
+          event.preventDefault();
+          startEditDocument(props.documentIsOpen[0].text);
+        }}
+      >
+        <EditRoundedIcon
+          className={style.header__openIcon}
+          style={{ fill: "white" }}
+          fontSize="default"
+        />
+        <span>Редактировать</span>
+      </button>
+    );
+  }
+
   return (
     <section className={style.header}>
       <div className={style.header__leftSide}>
         <h1 className={style.header__title}>Тестовое задание</h1>
       </div>
       <div className={style.header__rightSide}>
-        <button></button>
-        <button
+        {saveButton}
+        {/* <button
           className={style.header__saveButton}
           onClick={() =>
             props.documentEditMode
@@ -37,18 +103,8 @@ const Header = (props) => {
             fontSize="default"
           />
           <span>Сохранить</span>
-        </button>
-        <button
-          className={style.header__editButton}
-          onClick={() => startEditDocument(props.documentIsOpen[0].text)}
-        >
-          <EditRoundedIcon
-            className={style.header__openIcon}
-            style={{ fill: "white" }}
-            fontSize="default"
-          />
-          <span>Редактировать</span>
-        </button>
+        </button> */}
+          {editButton}
         <AccountBoxRoundedIcon
           className={style.header__accountIcon}
           style={{ fill: "white" }}

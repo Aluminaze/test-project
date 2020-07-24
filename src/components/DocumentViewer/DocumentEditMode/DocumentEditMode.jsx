@@ -6,7 +6,7 @@ const DocumentEditMode = (props) => {
   const onChangeEditedText = () => {
     props.onChangeEditDocumentText(editedText.current.value);
   };
-
+  
   return (
     <textarea
       className={style.documents__textarea}
