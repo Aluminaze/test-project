@@ -11,8 +11,9 @@ const DocumentEditMode = (props) => {
     <div className={style.documents__text}>
       <textarea
         className={style.documents__textarea}
-        onChange={onChangeEditedText}
         ref={editedText}
+        autofocus={true}
+        onChange={onChangeEditedText}
         value={props.documentIsOpen_textEdit}
       />
     </div>

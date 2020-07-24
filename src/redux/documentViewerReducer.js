@@ -17,8 +17,8 @@ export const onChangeEditDocumentText = (editedDocumentText) => ({
 });
 export const saveEditDocumentText = (documentId) => ({
   type: SAVE_EDIT_DOCUMENT_TEXT,
-  documentId
-})
+  documentId,
+});
 
 let initialState = {
   documents: [
@@ -35,9 +35,7 @@ let initialState = {
     { id: "4_2", name: "Декларация 2", text: "ID[4_2]: Декларация 2" },
     { id: "4_3", name: "Декларация 3", text: "ID[4_3]: Декларация 3" },
   ],
-  documentIsOpen: [
-    { id: null, name: null, text: "Выберите и откройте документ или пиcьмо" },
-  ],
+  documentIsOpen: [{ id: null, name: null, text: null }],
   documentIsOpen_textEdit: "",
   documentEditMode: false,
 };
@@ -50,7 +48,7 @@ const documentViewerReducer = (state = initialState, action) => {
         documentEditMode: false,
         documentIsOpen: state.documents.filter(
           (document) => document.id === action.documentId
-        )
+        ),
       };
     }
     case GET_START_EDIT_DOCUMENT: {
@@ -71,9 +69,9 @@ const documentViewerReducer = (state = initialState, action) => {
         ...state,
         documents: [
           ...state.documents,
-          state.documentIsOpen[0].text = state.documentIsOpen_textEdit
+          (state.documentIsOpen[0].text = state.documentIsOpen_textEdit),
         ],
-        documentEditMode: false
+        documentEditMode: false,
       };
     }
     default:
